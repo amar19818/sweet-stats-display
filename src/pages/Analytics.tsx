@@ -5,8 +5,9 @@ import { useAnalyticsData } from "@/hooks/useAnalyticsData";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import StatCard from "@/components/dashboard/StatCard";
 import {
-  ClicksPerDayChart, DeviceChart, BrowserChart, CountriesChart, ReferrersChart,
+  ClicksPerDayChart, DeviceChart, BrowserChart, ReferrersChart,
 } from "@/components/dashboard/Charts";
+import WorldMapChart from "@/components/dashboard/WorldMapChart";
 import OsBreakdown from "@/components/dashboard/OsBreakdown";
 import RecentClicksTable from "@/components/dashboard/RecentClicksTable";
 import { Loader2, AlertTriangle, ArrowLeft, Link2 } from "lucide-react";
@@ -96,8 +97,9 @@ export default function Analytics() {
           <BrowserChart data={data.browserBreakdown} />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <CountriesChart data={data.topCountries} />
+        <WorldMapChart data={data.topCountries} />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <ReferrersChart data={data.topReferrers} />
           <OsBreakdown data={data.osBreakdown} />
         </div>
