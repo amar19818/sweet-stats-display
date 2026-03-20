@@ -47,9 +47,14 @@ export default function WorldMapChart({ data }: Props) {
 
   const getColor = (iso3: string) => {
     const count = countryMap[iso3];
-    if (!count) return "hsl(228, 12%, 16%)";
-    const intensity = Math.max(0.15, count / (maxCount || 1));
-    return `hsl(199, 89%, ${12 + intensity * 40}%)`;
+    if (!count) return "hsl(220, 15%, 13%)";
+    const ratio = count / (maxCount || 1);
+    // 5-stop gradient: faint → light → medium → bright → vivid
+    if (ratio <= 0.2) return "hsl(199, 60%, 22%)";
+    if (ratio <= 0.4) return "hsl(199, 70%, 32%)";
+    if (ratio <= 0.6) return "hsl(199, 80%, 42%)";
+    if (ratio <= 0.8) return "hsl(199, 85%, 52%)";
+    return "hsl(199, 90%, 60%)";
   };
 
   return (
