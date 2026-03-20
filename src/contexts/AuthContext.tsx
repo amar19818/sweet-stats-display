@@ -22,7 +22,7 @@ const AuthContext = createContext<AuthContextType | null>(null);
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
-  const [apiBase, setApiBaseState] = useState(() => localStorage.getItem("api_base") || "http://localhost:3000");
+  const [apiBase, setApiBaseState] = useState(() => localStorage.getItem("api_base") || "https://urlshortener-1-11bw.onrender.com");
 
   const setApiBase = (url: string) => {
     const trimmed = url.replace(/\/+$/, "");
